@@ -1,0 +1,112 @@
+<app-nav-bar></app-nav-bar>
+
+
+<mat-card class="prod">
+
+  <mat-card class="card-empreendedor">
+    <mat-card-header class="card-dados">
+      <div mat-card-avatar class="img-negocio">
+        <img src='{{empreendedor.foto}}' alt="" class="img-negocio">
+      </div>
+      <div class="informacoes">
+        <mat-card-title>{{empreendedor.nomeNegocio}}</mat-card-title>
+        <mat-card-subtitle>{{empreendedor.ramo}}</mat-card-subtitle>
+        <h6>E-mail: {{empreendedor.email}}</h6>
+        <h6>Telefône: {{empreendedor.telefone}}</h6>
+        <h6>Produtos: {{produtosEmpreendedor.length}}</h6>
+      
+      </div>
+      
+    </mat-card-header>
+    
+   
+  </mat-card>
+  
+
+
+
+
+
+  <mat-toolbar color="primary">
+    <span>Seus produtos</span>
+
+    <div class="buttons">
+      <div>
+        <button class="space-button" routerLink="/marketplace/novo" mat-mini-fab color="primary">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+
+      <div>
+        <button routerLink="./categorias" mat-mini-fab color="primary">
+          <mat-icon>filter_list</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-toolbar>
+
+  <mat-card *ngFor="let produto of produtosEmpreendedor">
+    <mat-card class="card-unico">
+      <div class="combo">
+        <div class="header">
+          <div class="one">
+            <mat-card-header>
+              <mat-card-title>Nome do produto</mat-card-title>
+              <mat-card-subtitle>{{produto.nome}}</mat-card-subtitle>
+            </mat-card-header>
+            <img card-md-image id="size" src="{{produto.foto}}" alt="Imagem Produto">
+          </div>
+          <div class="two">
+            <div class="descricao">
+              <p>{{produto.descricao}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      <div class="variaveis">
+
+        <div>
+          <section class="un-form">
+            <section class="example-full-width">
+              <mat-card-header>
+                <mat-card-title>Quantidade</mat-card-title>
+                <mat-card-subtitle>{{produto.estoque}}</mat-card-subtitle>
+              </mat-card-header>
+            </section>
+          </section>
+        </div>
+
+        <div>
+          <section class="preco-form">
+            <section class="example-full-width">
+              <mat-card-header>
+                <mat-card-title>R$</mat-card-title>
+                <mat-card-subtitle>{{produto.valor}}</mat-card-subtitle>
+              </mat-card-header>
+            </section>
+          </section>
+        </div>
+
+      </div>
+
+      <div class="buttons-card">
+        <div>
+          <button class="delete space-button" mat-mini-fab color="primary" (click)="zerarEstoque(produto)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+
+        <div>
+          <button [routerLink]="['/marketplace/produto', produto.idProduto]" class="edit" mat-mini-fab color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+      </div>
+
+    </mat-card>
+  </mat-card>
+
+</mat-card>

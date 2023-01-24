@@ -1,0 +1,91 @@
+.introducao {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.introducao mat-card-title {
+  margin-left: 300px;
+}
+
+.introducao p {
+  margin-left: 300px;
+}
+
+
+.carousel {
+
+  height: 400px;
+  margin-top: 88px;
+}
+
+.carousel img {
+  object-fit: cover;
+  width: 400px;
+  height: 400px;
+}
+
+.cards-linha-1,
+.cards-linha-2 {
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+.card {
+  width: 100%;
+  height: 400px;
+  margin-bottom: 20px;
+  padding: 30px;
+}
+
+.card img {
+  display: flex;
+  justify-content: center;
+  margin: 100px 20px 10px 100px;
+  width: 200px;
+  height: 200px;
+  border-radius: 4px;
+}
+
+#img-futuro,
+#img-destaque {
+  margin-top: 50px;
+}
+
+#img-melhorias {
+  margin-top: 30px;
+}
+
+#img-eletronicos {
+  margin-top: 20px;
+}
+
+#img-liberdade {
+  margin-top: 50px;
+}
+
+#imgsobre{
+  margin-top: 50px;
+}
+
+#card-destaque {
+  margin: 0 20px;
+}
+
+
+#sumpUp-link {
+  margin-top: 15px;
+  border-radius: 5px;
+  width: 100px;
+  height: 60px;
+
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card-title {
+  margin-top: 20px;
+}

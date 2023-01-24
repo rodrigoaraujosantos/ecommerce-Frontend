@@ -1,0 +1,57 @@
+<ng-container>
+  <app-nav-bar></app-nav-bar>
+  <mat-toolbar></mat-toolbar>
+  <div class="container">
+    <h3>Produtos Cadastrados</h3>
+    <a mat-mini-fab color="primary" routerLink="novo">
+      <i class="material-icons">add</i>
+    </a>
+  </div>
+
+  <div class="container-title">
+    <mat-card *ngFor="let produto of produtos" class="example-card">
+      <img mat-card-image [src]="produto.foto" class="imagem">
+      <mat-card-content>
+        <p><strong>R$ {{produto.valor}}</strong></p>
+        <p>{{produto.nome}}</p>
+        <p>{{produto.categoria.departamento}}</p>
+        <p>Quantidade: {{produto.estoque}}</p>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="button" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">Detalhes</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title fs-5" id="exampleModalLabel">Detalhes</h5>
+
+              </div>
+              <div class="modal-body">
+                <p><strong>Id: </strong>{{produto.idProduto}}</p>
+                <p><strong>Produto: </strong>{{produto.nome}}</p>
+                <p><strong>Categoria: </strong>{{produto.categoria.departamento}}</p>
+                <p><strong>Estoque: </strong>{{produto.estoque}}</p>
+                <p><strong>Valor: </strong>{{produto.valor}}</p>
+                <p><strong>Desconto: </strong>{{produto.desconto}}</p>
+                <p><strong>Validade do Desconto: </strong>{{produto.validadeDesconto}}</p>
+                <p><strong>Descrição: </strong>{{produto.descricao}}</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">X</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button mat-raised-button color="warn" (click)="zerarEstoque(produto)">Excluir</button>
+        <button mat-raised-button color="accent"
+          [routerLink]="['/marketplace/produto', produto.idProduto]">Editar</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+
+</ng-container>

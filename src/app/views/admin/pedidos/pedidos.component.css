@@ -1,0 +1,27 @@
+.expansion {
+    width: 1000px;
+    margin-top: 100px;
+    margin-left: 110px;
+}
+
+.expandido {
+    display: flex;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+}
+.img-itens{
+    width: 50px;
+}
+.bolinha{
+    height: 20px;
+}
+mat-expansion-panel{
+    width: 1000px;
+ position: relative;
+  margin-left:160px;
+ 
+}
+button{
+    margin: 45px;
+}

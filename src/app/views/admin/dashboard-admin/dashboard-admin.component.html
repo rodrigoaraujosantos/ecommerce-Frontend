@@ -1,0 +1,77 @@
+<div class="dashboard">
+   
+    <div class="conteudo bg-light">
+        <div class="menu bg-light">
+            <div class="home">
+                <span><a href=""><i class="material-icons">home</i> HOME</a></span>
+            </div>
+            <div class="lista">
+               
+                <span><a [routerLink]="'/conta'">Minha conta</a></span>
+                <span><a [routerLink]="'/administrador/usuario'">Relação de usuarios</a></span>
+                <span><a [routerLink]="'/administrador/produtos'">Produtos cadastrados</a></span>
+            </div>
+
+        </div>
+        <div class="card-meio">
+            <div class="cabecalho">
+                <!-- <input type="text" [(ngModel)]="anoEscolhido" > <button mat-mini-fab color="primary" (click)="ngOnInit()"><i><i class="material-icons">
+                    search
+                </i></i></button> -->
+                <div class="">
+                    <button mat-button [matMenuTriggerFor]="menu" mat-icon-button> <i class="material-icons">person</i>
+                        <label>{{dadosGraficosusuario.nome}}</label></button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>Item 1</button>
+                        <button mat-menu-item>Item 2</button>
+                    </mat-menu>
+                </div>
+            </div>
+            <div class="cards">
+                <div class="nome-usuario">
+                    <p>Olá,  {{  dadosGraficosusuario.nome }}!</p>
+                </div>
+                <div class="sm-cards">
+                    <div class="admins">
+                        <p>Admins</p>
+                        <span>{{dadosGraficosusuario.quantidadeAdm}}</span>
+                    </div>
+                    <div class="vendas">
+                        <p>Clientes</p>
+                        <span>{{dadosGraficosusuario.quantidadeCliente}}</span>
+                    </div>
+                    <div class="cliente">
+                        <p>Empreendedores</p>
+                        <span>{{dadosGraficosusuario.quantidadeEmpreendedor}}</span>
+                    </div>
+                    <div class="produtos">
+                        <p>produtos</p>
+                        <span>{{dadosGraficosusuario.quantidadeProdutos}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="graficos">
+                <div class="grafico1">
+                    <app-grafico-barra *ngIf="graficoCliente" [barChartData]=" barChartData"></app-grafico-barra>
+                    
+                    
+                </div>
+                <div class="grafico2">
+                    <app-grafico-barra *ngIf="graficoEmpreendedor" [barChartData]=" dadosEmpreendedor"></app-grafico-barra>
+                </div>
+            </div>
+        </div>
+        <div class="g3 bg-light">
+             <app-grafico-barra *ngIf="graficoProdutosSemana" [barChartData]="dadosProdutoSemana">
+                    </app-grafico-barra>
+                    <app-grafico-barra *ngIf="graficoProdutosMes" [barChartData]="dadosProdutoMes">
+                    </app-grafico-barra>
+                   
+                    <app-grafico-pizza class="pizza" *ngIf="graficoProdutosVendidos" [dados]="pieChartData">
+
+                    </app-grafico-pizza>
+                    
+        </div>
+    </div>
+
+</div>

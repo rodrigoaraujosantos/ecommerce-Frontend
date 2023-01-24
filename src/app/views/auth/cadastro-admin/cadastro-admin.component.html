@@ -1,0 +1,102 @@
+<app-nav-bar></app-nav-bar>
+<mat-toolbar></mat-toolbar>
+<body class="bg-light">
+    <div id="container">
+    
+        <h3>Cadastrar Administrador</h3>
+        <form id="content bg-white" class="d-flex align-content-center p-5 col" >
+            <mat-stepper linear #stepper class="mat-elevation-z2">
+                <mat-step>
+                    <form [formGroup]="admin">
+                        <ng-template matStepLabel>Dados Pessoais</ng-template>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Nome</mat-label>
+                            <input matInput placeholder="Ex: João" required formControlName="nome">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Sobrenome</mat-label>
+                            <input matInput placeholder="Ex: Marques da Rocha" required formControlName="sobrenome">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>E-mail</mat-label>
+                            <input matInput placeholder="Ex: joao.marques@gmail.com" required formControlName="email">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>CPF</mat-label>
+                            <input matInput placeholder="Ex: 123.456.789-10" required formControlName="cpf">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Senha</mat-label>
+                            <input matInput type="password" placeholder="Ex: 123.456.789-10" required
+                                formControlName="senha">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Telefone</mat-label>
+                            <input matInput placeholder="Ex: (85) 98989-1547" required formControlName="telefone">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Data de Nascimento</mat-label>
+                            <input matInput placeholder="Ex: 10/12/1995" required formControlName="dataNascimento">
+                        </mat-form-field>
+                        <input type="file" class="upload-foto form-control" id="img"  (change)="uploadFile($event)">
+                        <div>
+                            <button mat-raised-button color="primary" matStepperNext [disabled]="!admin.valid">Próximo</button>
+                        </div>
+                    </form>
+                </mat-step>
+           
+                <mat-step>
+                
+                    <form [formGroup]="formEndereco">
+                        <ng-template matStepLabel>Endereço</ng-template>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>CEP</mat-label>
+                            <input matInput placeholder="Ex. 60.820-845" required formControlName="cep">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Rua</mat-label>
+                            <input matInput placeholder="Ex. Rua Cel João de Oliveira, n° 548" required
+                                formControlName="rua">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>numero</mat-label>
+                            <input matInput placeholder="Ex. Ceará" required formControlName="numero">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Bairro</mat-label>
+                            <input matInput placeholder="Ex. Presidente Kennedy" required formControlName="bairro">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Cidade</mat-label>
+                            <input matInput placeholder="Ex. Fortaleza" required formControlName="cidade">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Estado</mat-label>
+                            <input matInput placeholder="Ex. Ceará" required formControlName="estado">
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Ponto de referência</mat-label>
+                            <input matInput placeholder="Ex. Próximo a Igreja dos Mórmons" required
+                                formControlName="referencia">
+                        </mat-form-field>
+                        <div>
+                            <button mat-raised-button color="primary" matStepperNext>Próximo</button>
+                            <button mat-raised-button color="accent" class="custom" matStepperPrevious>Voltar</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Concluído</ng-template>
+                    <p>Desejar cadastrar o novo administrador?</p>
+                    <div>
+                        <button type="button" mat-raised-button color="primary" (click)="cadastrar()" >Cadastrar</button>
+                        <button type="button" mat-raised-button color="warn" class="custom" routerLink="/administrador"
+                            >Cancelar</button>
+                    </div>
+                </mat-step>
+            </mat-stepper>
+
+        </form>
+
+        
+   

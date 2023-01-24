@@ -1,0 +1,127 @@
+<nav class="navbar" [ngClass]="{'hidden': !navbarVisible}">
+    <mat-toolbar class="mat-elevation-z8" color="primary">
+        <div class="logo" routerLink=""><span><img src="../../../assets/logo-nav-bar-oficial.svg" alt=""></span> </div>
+   
+    
+        <!-- NAVBAR ADMINISTRADO 0 ↓ ↓ ↓ -->
+    <div class="flex-box" *ngIf="admin">
+        <button  mat-icon-button   matTooltip="Home" class="home" routerLink="/administrador" >
+            <i class="material-icons">house</i>
+            
+
+        </button>
+        <button mat-icon-button  matTooltip="Loja" class="mktplace" routerLink="/marketplace">
+            <i class="material-icons">local_mall</i>
+        </button>
+        <button mat-icon-button matTooltip="Carrinho" class="mktplace" routerLink="/conta/compras/carrinho">
+            <i class="material-icons">shopping_cart</i>
+            
+                
+        </button>
+        <button mat-button [matMenuTriggerFor]="menu" matTooltip="Painel Administrador">
+            <i class="material-icons">settings</i>
+        </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item routerLink="/administrador/usuario">Relação de Usuarios</button>
+                    <button mat-menu-item routerLink="/administrador/dashboard-adm/">Dashboard</button>
+                    <button mat-menu-item routerLink="/administrador/pedidos">Historico de pedidos gerais</button>
+                    <button mat-menu-item routerLink="/administrador/produtos">Historico de produtos cadastrados</button>
+                </mat-menu>
+            
+                
+                    <button   mat-icon-button [matMenuTriggerFor]="minhaConta" matTooltip="Meu Perfil">
+                        <i class="material-icons">person</i>
+                    </button>
+                    <mat-menu #minhaConta="matMenu">
+                        <button mat-menu-item routerLink="/conta">Minha Conta</button>
+                        <button mat-menu-item routerLink="/conta/compras/minhas-compras">Minhas Compras</button>
+                        <button mat-menu-item (click)="logout()"><i class="material-icons">logout</i></button>
+                    </mat-menu>
+                    </div>
+                      <!-- NAVBAR ADMINISTRADO 0 ↑ ↑ ↑ -->
+
+
+                             <!-- NAVBAR CLIENTE 1 ↓ ↓ ↓ -->
+                    <div class="flex-box" *ngIf="cliente">
+                        <button  mat-icon-button   matTooltip="Home" class="home"routerLink="/cliente" >
+                            <i class="material-icons"  >house</i>
+                            
+                
+                        </button>
+                        <button mat-icon-button  matTooltip="Loja" class="mktplace" routerLink="/marketplace">
+                            <i class="material-icons">local_mall</i>
+                        </button>
+                        <button mat-icon-button matTooltip="Carrinho" class="mktplace" routerLink="/conta/compras/carrinho">
+                            <i class="material-icons">shopping_cart</i>
+                        </button>
+                        <button   mat-icon-button [matMenuTriggerFor]="minhaConta" matTooltip="Meu Perfil">
+                            <i class="material-icons">person</i>
+                        </button>
+                        <mat-menu #minhaConta="matMenu">
+                            <button mat-menu-item routerLink="/conta">Minha Conta</button>
+                            <button mat-menu-item routerLink="/conta/compras/minhas-compras">Minhas Compras</button>
+                            <button mat-menu-item (click)="logout()"><i class="material-icons">logout</i></button>
+                        </mat-menu>
+                    </div>
+                             <!-- NAVBAR CLIENTE 1  ↑ ↑ ↑ -->
+
+
+                             <!-- NAVBAR EMPREENDEDOR 2 ↓ ↓ ↓ -->
+                    <div class="flex-box" *ngIf="empreendedor">
+                        <button  mat-icon-button   matTooltip="Home" class="home" routerLink="/empreendedor" >
+                            <i class="material-icons">house</i>
+                            
+                
+                        </button>
+                        <button mat-icon-button  matTooltip="Loja" class="mktplace" routerLink="/marketplace">
+                            <i class="material-icons">local_mall</i>
+                        </button>
+                        <button mat-icon-button matTooltip="Carrinho" class="mktplace" routerLink="/conta/compras/carrinho">
+                            <i class="material-icons">shopping_cart</i>
+                            
+                                
+                        </button>
+                        <button mat-button [matMenuTriggerFor]="menu" matTooltip="Painel Empreendedor">
+                            <i class="material-icons">settings</i>
+                        </button>
+                                <mat-menu #menu="matMenu">
+                                    <button mat-menu-item routerLink="/empreendedor/pedidos-Empreendedor">Relação de Pedidos</button>
+                                    
+                                    <button mat-menu-item routerLink="/empreendedor/produto-Empreendedor">Meus produtos </button>
+                                    
+                                </mat-menu>
+                            
+                                
+                                    <button   mat-icon-button [matMenuTriggerFor]="minhaConta" >
+                                        <i class="material-icons">person</i>
+                                    </button>
+                                    <mat-menu #minhaConta="matMenu">
+                                        <button mat-menu-item routerLink="/conta">Minha Conta</button>
+                                        <button mat-menu-item routerLink="/conta/compras/minhas-compras">Minhas Compras</button>
+                                        <button mat-menu-item (click)="logout()"><i class="material-icons">logout</i></button>
+                                    </mat-menu>
+                                    </div>
+                                    <div class="flex-box"  *ngIf="home">
+                                        <button  mat-icon-button   matTooltip="Home" class="home" routerLink="" >
+                                            <i class="material-icons">house</i>
+                                            
+                                
+                                        </button>
+                                        <button mat-icon-button  matTooltip="Loja" class="mktplace" routerLink="/marketplace">
+                                            <i class="material-icons">local_mall</i>
+                                        </button>
+                                        <button mat-icon-button matTooltip="Carrinho" class="mktplace" routerLink="/conta/compras/carrinho">
+                                            <i class="material-icons">shopping_cart</i>
+                                            
+                                                
+                                        </button>
+                                        <button mat-icon-button class="mktplace" routerLink="/auth">
+                                            login
+                                            
+                                                
+                                        </button>
+                                    </div>
+                                
+    </mat-toolbar>
+
+</nav>

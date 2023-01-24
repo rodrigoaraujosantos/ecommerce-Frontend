@@ -1,0 +1,87 @@
+<app-nav-bar></app-nav-bar>
+<mat-toolbar></mat-toolbar>
+
+<div fxLayout="row" class="bg-light">
+
+  <img class="banner" href="/marketplace" src="./../../../../assets/Venha conferir nossas novidades! - Banner.svg" alt="">
+  <!-- <div class="column justify-content-md-center"> -->
+  <div class="busca">
+    <mat-form-field class="field" appearance="outline">
+      <div class="input-group">
+        <input matInput style="font-size: 18px" type="text" placeholder="Buscar Produto" [(ngModel)]="busca">
+      </div>
+
+    </mat-form-field>
+    <button class="button-busca" mat-raised-button color="primary" (click)="buscarPorNome()">buscar</button>
+
+  </div>
+  <!--   </div> -->
+
+  <nav fxFlex="1" class="nav nav-justified">
+    <div id="sidebar" class="">
+      <div id="menu-sidebar">
+        <h5><span class="material-icons"> filter_alt </span>FILTROS</h5>
+        <hr>
+        <h6> CATEGORIAS </h6>
+        
+
+       
+        <div class="checkbox">
+          <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group"
+          [(ngModel)]="categoriaSelecionada"
+          (change)="findByCategoria()">
+          
+          <mat-radio-button class="example-radio-button" *ngFor="let categoria of categorias" [value]="categoria">
+           {{categoria.nomeCategoria}}
+          </mat-radio-button>
+        </mat-radio-group>
+         <button class="filtro" mat-button color="primary" (click)="limparFiltro()">limpar filtro</button>
+        </div>
+        <hr>
+
+        <h6>COM DESCONTO</h6>
+
+        <mat-checkbox (change)="buscarComDesconto()">Com desconto</mat-checkbox>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Conteúdo dos cards de produto -->
+  <div fxFlex="1" class="container-cards container-fluid">
+
+    <div class="row body-row">
+      <!-- (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" -->
+      <mat-card *ngFor="let produto of produtos" class="card">
+        <div [routerLink]="['produto/detalhe', produto.idProduto]" class="imagem">
+          <img mat-card-image [src]="produto.foto">
+        </div>
+        <mat-card-content>
+          <p class="produto-nome">{{produto.nome}}</p>
+          <h4 class="custom-text"><strong>R$ {{produto.valor}},00</strong></h4>
+          <span class="badge " [ngClass]="{
+            'bg-secondary': produto.desconto<= 50, 
+            'bg-primary': produto.desconto > 50 && produto.desconto <=100,
+            'bg-success': produto.desconto >100 && produto.desconto <=300,
+            'bg-warning': produto.desconto >300 && produto.desconto <=500,
+            'bg-danger': produto.desconto > 500 
+        }">
+            Desconto R${{produto.desconto}} <!-- {{produto.validadeDesconto | date:'dd/MM/yyyy'}}  -->
+          </span>
+          <p class="custom-categoria">{{ produto.categoria.departamento | lowercase }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- <button mat-button   [routerLink]="['produto/detalhe', produto.idProduto]" >Detalhes</button> -->
+          <!-- [ngStyle]="{'display': display, 'visibility': visibility}" -->
+          <button  (click)="InserirNoCarrinho( produto.idProduto )"  mat-raised-button class="custom-button" color="primary">
+            <span class="material-icons">
+              shopping_cart
+            </span>
+            Comprar</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<!-- </div> -->

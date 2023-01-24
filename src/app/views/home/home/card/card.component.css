@@ -1,0 +1,39 @@
+.body-card {
+    height: 200%;
+    padding: 10%;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.body-card h1{
+    color:#673AB7;
+    padding: 10px;
+}
+
+.card-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.card{
+    display: flex;
+    align-items: center;
+    border: none;
+}
+
+.card img {
+    width: 15%;
+    padding: 0px;
+    margin: 45px;
+}
+
+.card-text{
+    margin: 2px;
+    padding: 20px;
+    text-align: center;
+}
+.titulo{
+    background-image: linear-gradient( rgba(173, 24, 166, 0.685), #0ff);
+    width: 1300px;
+}

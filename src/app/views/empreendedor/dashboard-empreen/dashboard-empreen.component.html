@@ -1,0 +1,87 @@
+
+<div class="dashboard">
+    <app-nav-bar   class="nav-bar"></app-nav-bar>
+
+    
+<div class="conteudo"color="bg-light">
+    <div class="menu" >
+        <div class="home">
+             <span><a href=""><i class="material-icons">home</i> HOME</a></span>
+        </div>
+            <div class="lista">
+            <span><i class="material-icons">
+                work
+                </i>empreendedor</span>
+                <span><a href="">produtos</a></span>
+                <span><a href="">venda</a></span>
+                <span><a href="">cliente</a></span>
+                <span><a href="">dashboard</a></span>
+            </div>
+
+    </div>
+    <div class="card-meio" color="bg-white">
+        <div class="cabecalho">
+            <input type="text" >
+            <div >
+                <button mat-button [matMenuTriggerFor]="menu" mat-icon-button> <i class="material-icons">person</i> Rafael Camilo</button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item>Item 1</button>
+                  <button mat-menu-item>Item 2</button>
+                </mat-menu>
+              </div>
+        </div>
+        <div class="cards">
+            <div class="nome-usuario">
+                <p>Olá, Rafael camilo</p>
+            </div>
+            <div class="sm-cards">
+            <div class="admins">
+                <p>admins</p>
+                <span>4</span>
+            </div>
+            <div class="vendas">
+                <p>vendas</p>
+                <span>28</span>
+            </div>
+            <div class="cliente">
+                <p>cliente</p>
+                <span>12</span>
+            </div>
+            <div class="produtos">
+                <p>produtos</p>
+                <span>258</span>
+            </div>
+        </div>
+        </div>
+        <div class="graficos">
+            
+            <div class="grafico1 bg-white" >
+                <canvas baseChart class="chart"
+                [data]="barChartData"
+                [options]="barChartOptions"
+                [type]="barChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)">
+            </canvas>
+            
+            </div>
+            <div class="grafico2 bg-white">
+                <canvas baseChart class="chart"
+                [data]="pieChartData"
+                [type]="pieChartType"
+                [options]="pieChartOptions"
+            >
+        </canvas>
+            </div>
+        </div>
+    </div>
+    <div class="g3">
+        <canvas baseChart class="chart"
+        [data]="polarAreaChartData"
+        [legend]="polarAreaLegend"
+        [type]="polarAreaChartType">
+</canvas>
+    </div>
+    
+</div>
+

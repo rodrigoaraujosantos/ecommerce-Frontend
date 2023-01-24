@@ -1,0 +1,161 @@
+<app-nav-bar></app-nav-bar>
+
+<body class="bg-light">
+    <div class="wrapper d-flex align-items-stretch mt-5 bg-light">
+        <nav class="nav nav-justified">
+            <div id="sidebar" class="">
+                <a class="p-5"  routerLink="/conta">
+                    <img class="rounded-circle"
+                        [src]="usuario.foto">
+                </a>
+                <div id="menu-sidebar">
+                    <a class="nav-link text-dark" routerLink="/conta">
+                        <!-- Adicionar interpolação de perfil aqui -->
+                        <span class="material-icons"> account_circle </span>
+                        Minha conta
+                    </a>
+                    <a class="nav-link active" aria-current="page" routerLink="/conta/compras/minhas-compras">
+                        <span class="material-icons"> assignment </span>
+                        Minhas compras
+                    </a>
+                 
+                </div>
+            </div>
+        </nav>
+        <div id="content">
+            <div class="container-fluid">
+                <ul id="nav-body" class="nav nav-tabs nav-justified bg-white">
+                    <li class="nav-item">
+                        <a class="nav-link active text-primary" aria-current="page">Tudo</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link text-dark" >A pagar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark">A caminho</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark">Outros</a>
+                    </li>
+                </ul>
+                <div id="body" class="bg-white mat-elevation-z3" *ngFor="let pedido of minhasCompras, let i = index">
+                    
+                    <table class="table align-middle table-responsive table-borderless" >
+                        <thead>
+                            <tr class="align-top">
+                                <th scope="col">Nº PEDIDO:</th>
+                                <th scope="col">STATUS</th>
+                                <th scope="col">DATA</th>
+                                <th scope="col">PAGAMENTO</th>
+                                <th scope="col">
+                                    <p>
+                                        <button id="detalhes" class="fw-bold" type="button" data-bs-toggle="collapse"
+                                            [attr.data-bs-target]="'#collapseExample'+i" 
+                                            aria-expanded='false'
+                                            aria-controls="collapseExample ">
+                                            Detalhes <span class="material-icons">
+                                                expand_more
+                                            </span>
+                                        </button>
+                                    </p>
+                                </th>
+                            </tr>
+                        </thead>
+                   
+                
+                        <tbody class="table align-middle table-responsive table-borderless">
+                            <tr>
+                                <td>#Pedido: {{pedido.idPedido}}</td>
+                                <td class="status" >Status:<p class="badge" [ngClass]="{
+                     
+                                    'bg-primary': pedido.status == 'RECEBIDO',
+                                    'bg-success': pedido.status == 'ENTREGUE',
+                                    'bg-warning': pedido.status == 'PROCESSANDO'
+                                    
+                                }"> {{pedido.status}}</p></td>
+                                <td>{{pedido.dataDaCompra}}</td>
+                                <td>Pagamento</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <tr>
+                        <div class="collapse" [attr.id]="'collapseExample'+i">
+                            <div class="card card-body mat-elevation-z3">
+                                <table class="table align-middle table-responsive table-borderless">
+                                    <thead>
+                                        <tr class="align-top">
+                                            <th scope="col">Nº PEDIDO</th>
+                                            <th scope="col">STATUS</th>
+                                            <th scope="col">DATA</th>
+                                            <th scope="col">PAGAMENTO</th>
+                                            <th scope="col">
+                                                <p>
+                                                    <button class="btn btn-custom " type="button"
+                                                    data-bs-toggle="collapse"[attr.data-bs-target]="'#collapseExample'+i"
+                                                    aria-expanded='false' aria-controls="collapseExample">
+                                                        Fechar <span class="material-icons"> expand_less
+                                                        </span>
+                                                    </button>
+                                                </p>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <!-- INSERIR AQUI INTERPOLAÇÕES-->
+                                            <td>#Pedido: {{pedido.idPedido}}</td>
+                                            <td>Status {{pedido.status}}</td>
+                                            <td>{{pedido.dataDaCompra}}</td>
+                                            <td>Pagamento</td>
+                                        </tr>
+                                        <td colspan="5" class="bordered"></td>
+                                        <tr>
+                                            <th colspan="2">Endereço</th>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">{{pedido.entrega.cep}}  {{pedido.entrega.rua}}, {{pedido.entrega.numero}}, {{pedido.entrega.referencia}}, {{pedido.entrega.cidade}}
+                                                - {{pedido.entrega.estado}}</td>
+                                        </tr>
+                                        <td colspan="5" class="bordered"></td>
+                                        <tr *ngFor="let item of  pedido.itens">
+                                            <th colspan="2">
+                                                {{item.produto.nome}}
+                                                <p>
+                                                    <img class="img-produto"
+                                                        src="{{item.produto.foto}}"
+                                                        alt="">
+                                                </p>
+                                            </th>
+                                            <td colspan="3">
+                                                <p>Informações do produto: {{item.produto.descricao}}</p>
+                                            </td>
+                                        </tr>
+                                        <td colspan="5" class="bordered"></td>
+                                        <tr>
+                                            <td colspan="4">TOTAL PRODUTOS(S)</td>
+                                            <td> R$ {{pedido.valorTotal}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4">FRETE</td>
+                                            <td> GRATIS </td>
+                                        </tr>
+                                        <td colspan="5" class="bordered"></td>
+                                        <tr>
+                                            <th colspan="4">SUBTOTAL</th>
+                                            <th> R$ ? </th>
+                                        </tr>
+                                        <td colspan="5" class="bordered"></td>
+                                        <tr>
+                                            <th colspan="4" class="p-3 mb-2 bg-light">TOTAL PEDIDO</th>
+                                            <th class="p-3 mb-2 bg-light"> R$ {{pedido.valorTotal}} </th>
+                                        </tr>
+                                        <td colspan="5" class="bordered"></td>
+                                    </tbody>
+                                </table>
+                          
+                            </div>
+                        </div>
+                </div>
+                <div colspan="5" class="borda"></div>
+            </div>
+        </div>

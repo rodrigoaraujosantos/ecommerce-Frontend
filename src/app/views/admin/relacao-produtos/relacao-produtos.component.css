@@ -1,0 +1,76 @@
+.container {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0 20px 20px;
+}
+.container-title {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    
+    margin: 20px 0 20px 20px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container-cards {
+  margin-left: 150px;
+  display: flex;
+  padding: 32px;
+}
+
+.example-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  text-align: center;
+  background: rgb(238, 241, 254);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  max-height: 400px;
+  margin-left: 32px;
+  margin-top: 32px;
+}
+
+.imagem {
+  width: 250px;
+  height: 200px;
+  padding: 20px;
+}
+
+.modal-content{
+  width: 550px;
+  height: 250px;
+  margin-left: 450px;
+}
+.modal-body{
+  overflow-y:auto;
+  text-align: justify;
+  margin-left: 25px;
+  margin-top: 25px;
+  
+}
+
+.modal-header{
+  margin-left: 25px;
+}
+
+.modal-footer{
+  height: 50px;
+}
+
+.modal-footer button{
+  margin-right: 25px;
+  width: 50px;
+}
+p{
+  margin-right: 25px;
+}

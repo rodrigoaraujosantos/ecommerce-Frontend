@@ -1,0 +1,106 @@
+<app-nav-bar></app-nav-bar>
+<mat-toolbar></mat-toolbar>
+
+<div class="bg-light top"></div>
+
+<body class="bg-light">
+  <div class="container">
+
+    <article class="card-box container-fluid">
+      <div class="card-body">
+        <div class="row">
+          
+          <aside class="col-md-6 ">
+
+            <article class="gallery-wrap">
+
+              <div class="card img-big-wrap">
+                
+                <a> <img class="img-fluid foto" src="{{produto.foto}}"></a>
+              </div> <!-- card img-big-wrap.// -->
+           
+            </article>
+          </aside>
+
+
+          <main class="col-md-6 align-content-around">
+            <article>
+              <a href="/marketplace" class="text-primary btn-link">{{produto.categoria.nomeCategoria}}</a>
+              <h3 class="title">{{produto.nome}}</h3>
+
+              <div class="mb-3">
+                <div class="preco"><span class="custom-text">R$ {{produto.valor}},00</span>
+                  <span class="badge">
+                    Desconto R${{produto.desconto}} <!-- {{produto.validadeDesconto | date:'dd/MM/yyyy'}}  -->
+                  </span>
+                </div> <br>
+                <!--  <span>Valor total: R$ {{itemCarrinho.valorParcial}}</span> -->
+                <div class="itens">
+
+
+                 <!--  <div class="modelsInfo--qtarea"> -->
+                    <a mat-stroked-button class="mat-button-small" (click)="retirarQtd()">-</a>
+                    <input type="number" size="3" class="mini-box" [(ngModel)]="itemCarrinho.quantidade">
+                    <a mat-stroked-button class="mat-button-small" (click)="adicionarQtd()">+</a>
+                    <h6>Estoque: {{produto.estoque}}</h6>
+               <!--    </div> -->
+                </div>
+                <div class="buttons ">
+                  <button mat-raised-button class="custom-button" (click)="criarItem()"><span class="material-icons">
+                      shopping_cart
+                    </span>Adicionar ao Carrinho</button>
+                  <button mat-raised-button color="primary" (click)="criarItem()">Comprar Agora</button>
+
+                </div>
+              </div>
+              <div>
+                <span>Frete</span> <strong>Grátis</strong>  <p> Vendido e Entregue por:{{produto.idEmpreendedor}}</p>
+              </div>
+
+
+              <hr>
+
+
+            </article> <!-- product-info-aside .// -->
+          </main> <!-- col.// -->
+        </div> <!-- row.// -->
+      </div> <!-- card-body.// -->
+    </article>
+
+  
+      <div class="card-box2">
+        <div class="descricaoprod">
+          <div class="bg-light descricao">
+            <h4 class="desc"><strong>Descrição do produto</strong></h4>
+          </div>
+          <hr>
+          <p>{{produto.descricao}} </p>
+          <hr>
+           <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+             Ea molestias, sint numquam eveniet laboriosam temporibus voluptatem
+            perspiciatis dolorum quidem nobis cupiditate maxime eaque doloribus sunt
+            accusamus consectetur ut quo nihil voluptas voluptatibus tempore sit. 
+            Cupiditate, veniam rem! Veritatis quis quidem similique corporis 
+            alias sint velit nemo saepe tempora? Distinctio perferendis facere 
+            architecto esse. Unde eius, sequi, beatae repellat, sit minus vero 
+            excepturi dolorem nesciunt sunt accusamus facilis dicta. Fuga facere
+            quod sequi ducimus commodi reprehenderit impedit maxime aperiam nesciunt
+            vero hic eligendi voluptatem accusantium exercitationem totam possimus 
+            dicta quis dignissimos neque blanditiis accusamus doloremque at, repellendus
+            dolor? Ea animi suscipit voluptatum, fugit laudantium cum quia, perferendis 
+            itaque laborum quod at quo eaque, est neque blanditiis beatae pariatur delectus
+            molestiae aliquid quis numquam! Dolores, veniam nobis laudantium ex quidem veritatis
+            nulla? Ipsum est molestiae voluptatum soluta libero corrupti ad delectus maiores 
+            consectetur quis et veniam, iusto dolore tenetur eius neque impedit.</p>
+         
+          <p  class="loja"><strong> Vendido e Entregue por:</strong>{{produto.idEmpreendedor}}</p>
+          <p class="foot">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita itaque nisi debitis delectus, ea quod reiciendis cumque eum alias atque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quae error aperiam distinctio nesciunt temporibus nisi sapiente, quibusdam vel ea praesentium harum veniam, natus corrupti molestias itaque eligendi ad provident!
+          </p>
+        </div>
+        
+      </div> <!-- card-body.// -->
+   
+  </div>
+
+
+</body>

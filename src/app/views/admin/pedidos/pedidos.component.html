@@ -1,0 +1,43 @@
+
+    <app-nav-bar></app-nav-bar>
+    <mat-toolbar></mat-toolbar>
+    <div class="expansion">
+        <mat-expansion-panel *ngFor="let pedido of pedidos">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    N° Pedido: {{pedido.idPedido}}
+                </mat-panel-title>
+    
+                <mat-panel-title  class="badge " [ngClass]="{
+                     
+                    'bg-primary': pedido.status == 'RECEBIDO',
+                    'bg-success': pedido.status == 'ENTREGUE',
+                    'bg-warning': pedido.status == 'PROCESSANDO'
+                    
+                }">
+                    {{pedido.status}}
+                </mat-panel-title>
+    
+            </mat-expansion-panel-header>
+            <div class="expandido" *ngFor="let item of pedido.itens">
+                <p>id produto: {{item.produto.idProduto}}</p>
+                <p>Nome do produto:  {{item.produto.nome}} <p>
+               <img src="{{item.produto.foto}}" alt="" class="img-itens">
+               <p><strong>Loja: </strong> {{item.produto.nomeNegocio}}  </p> 
+               <p class="badge bolinha " [ngClass]="{
+                     
+                    'bg-primary': item.carrinho == 'ABERTO',
+                    'bg-success': item.carrinho == 'FECHADO',
+                    'bg-warning': item.carrinho == 'PROCESSANDO'
+                    
+                }">{{item.carrinho}}</p>
+
+                
+            </div>
+            
+            
+        </mat-expansion-panel>
+        <button  mat-button color="primary"(click)="funcaoGeracao()">
+            Gerar Relatório Mensal
+              </button>
+    </div>

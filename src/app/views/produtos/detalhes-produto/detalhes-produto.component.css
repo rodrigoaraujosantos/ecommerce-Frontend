@@ -1,0 +1,184 @@
+.foto{
+  width: clamp(100px, 100%, 400px);
+  height: clamp(100px ,100%, 400px);
+  padding: 10px;
+  padding-top: 10px;
+  align-items: center;
+  justify-content: flex-end; 
+}
+
+.img-big-wrap{
+  background-position: 50% 50%;
+  height: 450px;
+  width: 450px;
+  margin-left: 55px;
+  justify-content: center;
+ 
+}
+
+img{
+  object-fit: cover;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+img{
+  
+  height: 200px;
+  width: 200px;
+}
+
+.descricaoprod{
+  margin: 52px;
+}
+
+.card-box{
+  height: 550px;
+  width: 100%;
+  padding-top: 10px;
+  background-color: white;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+  border-radius: 2px; 
+  
+}
+
+.card-box2{
+  height: 750px;
+  width: 100%;
+  margin-top: 20px;
+  padding-top: 10px;
+  background-color: white;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+  border-radius: 2px; 
+
+}
+
+.card-body {
+  height: 00px;
+  width: 100%;
+  padding-top: 20px;
+
+  
+}
+
+body{
+  /* margin-top: -10vh; */
+  width: 100%;
+  height: 250vh;
+ 
+}
+
+.top{
+  height: 10vh;
+}
+
+.descricao{
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.desc {
+  padding-top: 10px;
+  padding-left: 5px;
+  font-family: Poppins, sans-serif;
+  font-weight: 300;
+
+}
+
+.custom-button{
+  color: #673ab7;
+  background-color: #683ab722;
+}
+
+.custom-button:hover{
+  color: white;
+  background-color: blueviolet;
+}
+
+button{
+  
+  height: 50px;
+  font-size: larger;
+}
+
+.custom-text {
+  color: #6535b9;
+  display: flex;
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 14px 0px;
+  line-height: 30px;
+}
+
+.preco {
+  background-color: #f8f9fa;
+  height: 60px;
+  padding-top: 12px;
+  padding-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  display: flex
+}
+
+.badge {
+  height: 20px;
+  margin-left: 15px;
+  background-color: #673ab7;
+}
+
+input[type="number"] {
+  
+  width: 50px;
+  height: 36px;
+  border-width: 0px;
+  justify-items: center;
+  justify-content: center;
+  padding-left: 20px;
+  font-weight: 500;
+  font-size: 18px;
+ 
+
+}
+
+.loja {
+  padding-top: 80px;
+}
+
+strong{
+  margin: 3px;
+}
+
+h6{
+  margin-left: 200px;
+  margin-top: -29px;
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+}
+
+.itens{
+  align-items: flex-start;
+  padding-top: 15px;
+}
+
+.buttons{
+  padding-top: 35px;
+  padding-bottom: 30px;
+}
+
+.foot {
+  font-size: smaller;
+  padding-top: 40px;
+}
+
+button:hover {
+  background-color:blueviolet;
+  cursor: pointer;
+ }
+
+ p{
+  margin-top:5px;
+    text-align:justify;
+    margin: 2%;
+ }

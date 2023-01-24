@@ -1,0 +1,209 @@
+<app-nav-bar></app-nav-bar>
+
+<body class="bg-light">
+  <div id="container">
+
+    <mat-tab-group class="d-flex align-items-center p-5 bg-light">
+
+      <mat-tab label="Cliente">
+        <mat-vertical-stepper [linear]="false" #stepper animationDuration="1000">
+
+          <mat-step [stepControl]="FormClienteDadosPessoais">
+
+            <form [formGroup]="FormClienteDadosPessoais">
+              <ng-template matStepLabel>Dados Pessoais</ng-template>
+
+              <mat-form-field>
+                <input matInput placeholder="Nome" formControlName="nome" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Sobrenome" formControlName="sobrenome" required>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input matInput type="email" placeholder="E-mail" formControlName="email" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="CPF" formControlName="cpf" required>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input matInput type="password" placeholder="Senha" formControlName="senha" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Telefone" formControlName="telefone" required>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input matInput placeholder="Data de Nascimento" formControlName="dataNascimento" required>
+              </mat-form-field>
+              <input type="file" class="upload-foto form-control" id="img"  (change)="uploadFile($event)"><br>
+              <div>
+                <button mat-raised-button color="primary" matStepperNext
+                  [disabled]="!FormClienteDadosPessoais.valid">Próximo</button>
+              </div>
+
+            </form>
+          </mat-step>
+          <!-- 2° STEP cliente -->
+
+
+          <mat-step [stepControl]="formEndereco">
+            <form [formGroup]="formEndereco">
+              <ng-template matStepLabel>Endereço</ng-template>
+              <mat-form-field>
+                <input matInput placeholder="CEP" formControlName="cep" required>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input matInput placeholder="Rua" formControlName="rua" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Número" formControlName="numero" required>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input matInput placeholder="Referência" formControlName="referencia" required>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input matInput placeholder="Bairro" formControlName="bairro" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Cidade" formControlName="cidade" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Estado" formControlName="estado" required>
+              </mat-form-field>
+
+              <div>
+                <input type="checkbox" checked disabled><a routerLink="/termos" required>Você aceita os termos e politicas da página</a>
+                <br>
+                <button mat-raised-button matStepperPrevious color="accent" class="custom">Voltar</button>
+                <button mat-raised-button matStepperNext color="primary" (click)="cadastrar()"
+                  [disabled]="!formEndereco.valid">Cadastrar</button>
+              </div>
+            </form>
+          </mat-step>
+        </mat-vertical-stepper>
+      </mat-tab>
+      <!-- =Inicio do empreendedor -->
+
+      <mat-tab label="Empreendedor">
+        <mat-vertical-stepper [linear]="false" #stepper animationDuration="1000">
+          <mat-step [stepControl]="FormEmpreendedorDadosPessoais">
+            <form [formGroup]="FormEmpreendedorDadosPessoais">
+              <ng-template matStepLabel>Dados Pessoais</ng-template>
+              <mat-form-field>
+                <input matInput placeholder="Nome" formControlName="nome" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Sobrenome" formControlName="sobrenome" required>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input matInput placeholder="Email" formControlName="email" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="CPF" formControlName="cpf" required>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input type="password" matInput placeholder="Senha" formControlName="senha" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Telefone" formControlName="telefone" required>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input matInput placeholder="Data de Nascimento" formControlName="dataNascimento" required>
+              </mat-form-field>
+              <input type="file" class="upload-foto form-control" id="img"  (change)="uploadFile($event)"><br>
+              <div>
+                <button mat-raised-button matStepperNext color="primary" >Próximo</button>
+              </div>
+              
+            </form>
+          </mat-step>
+          <!--   2° STEP empreendedor -->
+
+          <mat-step [stepControl]="FormEmpreendedorDadosPessoais">
+            <form [formGroup]="FormEmpreendedorDadosPessoais">
+              <ng-template matStepLabel>Dados do Negócio</ng-template>
+              <mat-form-field>
+                <input matInput placeholder="Nome do Negócio" formControlName="nomeNegocio" required>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input matInput placeholder="Ramo" formControlName="ramo" required>
+              </mat-form-field>
+              <div>
+                <button mat-raised-button matStepperPrevious color="accent" class="custom">Voltar</button>
+                <button mat-raised-button matStepperNext color="primary"
+                  [disabled]="!FormEmpreendedorDadosPessoais.valid">Próximo</button>
+              </div>
+            </form>
+          </mat-step>
+          <!--   3° STEP Empreendedor -->
+
+          <mat-step [stepControl]="formEndereco">
+            <form [formGroup]="formEndereco">
+              <ng-template matStepLabel>Endereço </ng-template>
+              <mat-form-field>
+                <input matInput placeholder="CEP" formControlName="cep" required>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input matInput placeholder="Rua" formControlName="rua" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Número" formControlName="numero" required>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input matInput placeholder="Referência" formControlName="referencia" required>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <input matInput placeholder="Bairro" formControlName="bairro" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Cidade" formControlName="cidade" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Estado" formControlName="estado" required>
+              </mat-form-field>
+
+
+              <div>
+                <input type="checkbox" checked disabled><a routerLink="/termos" required>Você aceita os termos e politicas da página</a>
+                <br>
+                <button mat-raised-button matStepperPrevious color="accent" class="custom">Voltar</button>
+                <button mat-raised-button matStepperNext color="primary" (click)="cadastrar()"
+                  [disabled]="!formEndereco.valid">Cadastrar</button>
+
+              </div>
+            </form>
+          </mat-step>
+
+
+        </mat-vertical-stepper>
+      </mat-tab>
+
+    </mat-tab-group>
+    <!--  </div>
+  </div>  -->
+    <!-- </body>
+   -->

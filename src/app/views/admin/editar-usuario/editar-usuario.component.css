@@ -1,0 +1,47 @@
+
+#sidebar {
+    padding-left: 5vh;
+    margin: 0;
+    padding-top: 10vh;
+  }
+  
+  #menu-sidebar {
+    margin-top: 3vh;
+    margin-left: 5vh;
+  }
+  
+  .nav-link {
+    padding: 2vh;
+    width: 32vh;
+  }
+  
+  .rounded-circle {
+    height: 25vh;
+    width: 25vh;
+  }
+
+  #content {
+    box-sizing: border-box;
+    height: 600px;
+    width: 100%;
+    margin: 0;
+    margin-top: 10vh;
+    margin-right: 5vh;
+    border-radius: 3px; 
+}
+
+form {
+    padding-top: 5vh;
+    padding-left: 15vh;
+
+}
+
+button:hover {
+ background-color:blueviolet;
+ cursor: pointer;
+ border-radius: 3px;
+}
+
+mat-form-field{
+    margin-inline: 1vh;
+}

@@ -1,0 +1,81 @@
+<app-nav-bar></app-nav-bar>
+
+
+
+
+    <body color="bg-light">
+     
+      <div class="carousel">
+        <div id="carouselExampleControls" class="carousel slide d-block " data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="../../../../../assets/MARKETING.png" class="d-block w-100 " height="200" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="./../../../../assets/img adm.jpg" class="d-block w-100 " height="200" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="../../../../assets/home adm 2.png" class="d-block w-100" height="200" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <mat-card class="introducao">
+          <mat-card-title>Bem vindo(a) Administrador ! </mat-card-title>
+         
+        </mat-card>
+      </div>
+
+      <div class="cards-linha-1">
+        <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title>Minha Agenda</mat-card-title>
+            <mat-card-subtitle>Meu planejamento</mat-card-subtitle>
+          </mat-card-header>
+          <a href="https://calendar.google.com/calendar/u/1/r" target="_blank"><img mat-card-image
+              src="../../../../assets/home adm 3.jpg" id="img" ></a>
+        </mat-card>
+
+        <mat-card id="card-destaque" class="card">
+          <mat-card-header>
+            <mat-card-title>Análise da plataforma</mat-card-title>
+            <mat-card-subtitle>Tenha controle de todos os dados</mat-card-subtitle>
+          </mat-card-header>
+          <a href= "/administrador/dashboard-adm" target="_blank"><img mat-card-image
+              src="../../../../assets/controle-financeiro.jpg"   id="img-destaque"></a>
+        </mat-card>
+
+        <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title>Relatório Mensal</mat-card-title>
+            <mat-card-subtitle>Tenha acesso direto ao seu relatório</mat-card-subtitle>
+          </mat-card-header>
+           <button (click)="funcaoGeracao()">
+            <img id="img-futuro" mat-card-image src="../../../../../assets/pdf.jpg">
+          </button>
+        </mat-card>
+      </div>
+
+   
+
+
+
+
+
+
+
+
+
+<app-footer></app-footer>

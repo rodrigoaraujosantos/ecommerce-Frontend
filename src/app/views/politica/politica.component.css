@@ -1,0 +1,26 @@
+h2 {
+    text-align: center;
+    padding-top: 50px;
+    margin-top: 30px;
+}
+
+p {
+    text-align: justify;
+    margin: 2%;
+}
+
+div {
+    padding: 10px;
+}
+
+
+.pesquisa {
+    margin: 2%;
+    margin-right: 2px;
+    text-align: center;
+}
+
+h3{
+    text-align: justify;
+    margin: 2%;
+}

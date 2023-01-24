@@ -1,0 +1,99 @@
+<body class="bg-light">
+    <app-nav-bar></app-nav-bar>
+    <mat-toolbar></mat-toolbar>
+    <h3 style="vertical-align: middle;" class="titulo">RELAÇÃO DE PEDIDOS <span style="vertical-align: middle;"
+            [style.font-size]="'40px'" class="material-icons">
+            list_alt
+        </span></h3>
+
+
+    <div class="expansion">
+        <mat-expansion-panel *ngFor="let item of itens">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    N° Pedido: {{item.idItem}}
+                </mat-panel-title>
+
+                <mat-panel-title [ngClass]=" {
+                'text-success': item.carrinho == 'FECHADO',
+                'text-primary':  item.carrinho == 'ABERTO', 
+                'text-secondary':  item.carrinho == 'PROCESSANDO'
+            }">
+                    Status:
+                    {{item.carrinho}}
+                </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            
+            <div class="expandido">
+                <!--Interpolações aqui-->
+                <table class="informacao-pedido">
+
+                    <div class="">
+                        <tr>
+                            <strong>EMAIL:</strong>
+                        </tr>
+                        <td>
+                            <p>
+                                {{item.email}}
+                            </p>
+                        </td>
+                    </div>
+                    <hr>
+                    <div class="">
+                        <tr>
+                            <strong>NOME DO PRODUTO:</strong>
+                        </tr>
+                        <td>
+                            <p>
+                                {{item.produto.nome}}
+                            </p>
+                        </td>
+                    </div>
+                    <hr>
+                    <div class="">
+                        <tr>
+                            <strong>QUANTIDADE:</strong>
+                        </tr>
+                        <td>
+                            <p>
+                                {{item.quantidade}}
+                            </p>
+                        </td>
+                    </div>
+                    <hr>
+                    <div class="">
+                        <tr>
+                            <strong>FOTO DO PRODUTO:</strong>
+                        </tr>
+                        <td>
+                            <p>
+                                <img src="{{item.produto.foto}}" alt="" class="imgProd">
+                            </p>
+                        </td>
+                    </div>
+
+                </table>
+                
+                <div class="status-atualizar">
+                    <mat-form-field class="status">
+                        <mat-label>Status</mat-label>
+                        <mat-select [(ngModel)]="item.carrinho">
+                            <mat-option value="PROCESSANDO">
+                                PROCESSANDO
+                            </mat-option>
+                            <mat-option value="FECHADO">
+                                ENTREGUE
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    
+                    <button mat-raised-button color="primary" class="btn-atualizar"
+                        (click)="mudarStatusDoItem(item)">atualizar</button>
+                </div>
+                
+            </div>
+            <hr>
+        </mat-expansion-panel>
+    </div>
+</body>

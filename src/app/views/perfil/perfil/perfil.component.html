@@ -1,0 +1,155 @@
+<app-nav-bar></app-nav-bar>
+
+<body class="bg-light">
+    <div class="wrapper d-flex align-items-stretch mt-5 bg-light">
+        <nav class="nav nav-justified">
+            <div id="sidebar" class="">
+                <a class="p-5" href="/conta">
+                    <img class="rounded-circle"
+                        src="{{usuario.foto}}">
+                </a>
+                <div id="menu-sidebar">
+                    <a class="nav-link active" href="/conta">
+                        <!-- Adicionar interpolação de perfil aqui -->
+                        <span class="material-icons"> account_circle </span>
+                        Minha conta
+                    </a>
+                    <a class="nav-link text-dark" aria-current="page" href="/conta/compras/minhas-compras">
+                        <span class="material-icons"> assignment </span>
+                        Minhas compras
+                    </a>
+                  
+                </div>
+            </div>
+        </nav>
+        <div id="content" class="bg-white container-fluid mat-elevation-z3">
+            <div class="container-fluid">
+                <mat-tab-group>
+
+                    <mat-tab label="Perfil">
+
+                        <form #formEditPerfil="ngForm">
+                            <h4>Meu Perfil</h4>
+                            <mat-form-field class="test" appearance="fill" class="small">
+                                <mat-label>Nome</mat-label>
+                                <input type="text" name="nome" matInput placeholder="" name="nome"
+                                    [(ngModel)]="usuario.nome" required>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill" class="small">
+                                <mat-label>Sobrenome</mat-label>
+                                <input type="text" name="sobrenome" matInput placeholder="" name="sobrenome"
+                                    [(ngModel)]="usuario.sobrenome" required>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill" class="small">
+                                <mat-label>Data de Nascimento</mat-label>
+                                <input type="text" name="dataNascimento" matInput placeholder="" name="datadeNascimento"
+                                    [(ngModel)]="usuario.dataNascimento" required>
+                            </mat-form-field><br>
+
+                            <mat-form-field appearance="fill" class="small">
+                                <mat-label>CPF</mat-label>
+                                <input type="text" name="cpf" matInput placeholder="" name="cpf"
+                                    [(ngModel)]="usuario.cpf" required>
+                            </mat-form-field><br>
+
+                            <mat-form-field appearance="fill" class="small">
+                                <mat-label>Email</mat-label>
+                                <input type="email" name="email" matInput placeholder="" name="email"
+                                    [(ngModel)]="usuario.email" required>
+                            </mat-form-field><br>
+
+                            <mat-form-field appearance="fill" class="small">
+                                <mat-label>Telefone</mat-label>
+                                <input type="text" name="telefone" matInput placeholder="" name="telefone"
+                                    [(ngModel)]="usuario.telefone" required>
+                            </mat-form-field>
+                            <input type="file" class="upload-foto form-control" id="img"  (change)="uploadFile($event)">
+
+                           <!--  <mat-form-field>
+                                <mat-label>Foto de Perfil</mat-label>
+                                <input type="file" class="upload-foto form-control" id="img">
+                            </mat-form-field> -->
+                            <div fxLayout="row" fxLayoutAlign="center"> <button mat-raised-button color="primary"
+                                (click)="updatePerfil(formEditPerfil)">Salvar</button></div>
+                           
+                        </form>
+                        <div></div>
+                    </mat-tab>
+
+                    <mat-tab label="Endereço">
+                        <form #formEditEndereco="ngForm">
+                            <h4>Endereço</h4>
+                            <mat-form-field appearance="fill" class="small">
+                                <mat-label>CEP</mat-label>
+                                <input type="text" name="CEP" matInput placeholder="" name="CEP"
+                                    [(ngModel)]="endereco.cep" required>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill" class="small">
+                                <mat-label>Rua</mat-label>
+                                <input type="text" name="rua" matInput placeholder="" name="rua"
+                                    [(ngModel)]="endereco.rua" required>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill" class="small">
+                                <mat-label>Número</mat-label>
+                                <input type="number" name="numero" matInput placeholder="" name="numero"
+                                    [(ngModel)]="endereco.numero" required>
+                            </mat-form-field><br>
+
+                            <mat-form-field appearance="fill" class="small">
+                                <mat-label>Bairro</mat-label>
+                                <input type="text" name="bairro" matInput placeholder="" name="bairro"
+                                    [(ngModel)]="endereco.bairro" required>
+                            </mat-form-field><br>
+
+                            <mat-form-field appearance="fill" class="small">
+                                <mat-label>Cidade</mat-label>
+                                <input type="cidade" name="cidade" matInput placeholder="" name="cidade"
+                                    [(ngModel)]="endereco.cidade" required>
+                            </mat-form-field><br>
+
+                            <mat-form-field appearance="fill" class="small">
+                                <mat-label>Estado</mat-label>
+                                <input type="text" name="estado" matInput placeholder="" name="estado"
+                                    [(ngModel)]="endereco.estado" required>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill" class="small">
+                                <mat-label>Referências</mat-label>
+                                <input type="text" name="referencia" matInput placeholder="" name="referencia"
+                                    [(ngModel)]="endereco.referencia" required>
+                            </mat-form-field>
+                            <div fxLayout="row" fxLayoutAlign="center">
+                                <button mat-raised-button color="primary"
+                                (click)="updateEndereco(formEditEndereco)">Salvar</button>
+                            </div>
+                            
+                        </form>
+                    </mat-tab>
+
+                    <mat-tab label="Senha">
+                        <form #formEditSenha="ngForm">
+                            <h4>Alterar senha</h4>
+                            <mat-form-field appearance="fill" class="small">
+                                <mat-label>Senha</mat-label>
+                                <input type="password" name="senha" matInput placeholder="" name="atualizarSenha"
+                                    [(ngModel)]="atualizarSenha.senha" required>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill" class="small">
+                                <mat-label>Nova Senha</mat-label>
+                                <input type="password" name="novaSenha" matInput placeholder="" name="atualizarSenha"
+                                    [(ngModel)]="atualizarSenha.novaSenha" required>
+                            </mat-form-field>
+                            <div fxLayout="row" fxLayoutAlign="space-between center"><button mat-raised-button color="primary"
+                                (click)="updateSenha(formEditSenha)">Salvar</button></div>
+                            
+                        </form>
+                        
+                    </mat-tab>
+                    <mat-tab-group>
+            <!-- </div> -->
+     <!--    </div>  -->

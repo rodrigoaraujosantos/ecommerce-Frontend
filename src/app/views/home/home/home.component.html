@@ -1,0 +1,104 @@
+<app-nav-bar></app-nav-bar>
+<mat-toolbar></mat-toolbar>
+<body>
+  
+
+    <ng-container >
+        
+          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active" >
+                <img src="../../../../../assets/aulas.png"  alt="..." class="d-block w-100" >
+              </div>
+              <div class="carousel-item">
+                <img src="../../../../../assets/promo.png"  alt="..." class="d-block w-100">
+              </div>
+              <div class="carousel-item">
+                <img src="../../../../../assets/img1.jpeg" alt="..." class="d-block w-100">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+           
+        
+        <div class="elementos"> 
+          <div class="fone">
+            <img src="../../../../../assets/fone.jpg"  alt="...">
+          <div class="label">
+            <h6>Fones</h6>
+          </div>
+          </div>
+          <div class="game">
+            <img src="../../../../../assets/controle.jpg"  alt="...">
+            <div class="label">
+              <h6>Games</h6>
+            </div>
+          </div>
+          <div class="teclado">
+       
+            <img src="../../../../../assets/teclado.jpg"  alt="...">
+            <div class="label">
+              <h6>Teclado</h6>
+            </div>
+            </div>
+            <div class="mouse">
+              <img src="../../../../../assets/mouse.jpg"  alt="...">
+              <div class="label">
+                <h6>Mouse</h6>
+              </div>
+            </div>
+            <div class="tela">
+              <img src="../../../../../assets/monitor.jpg"  alt="...">
+              <div class="label">
+                <h6>Monitores</h6>
+              </div>
+            </div>
+          </div>
+         
+        
+       
+         
+      
+       
+     
+<div class="ofertas">
+<div class="anuncio"><mat-icon fontIcon=""></mat-icon><strong>Ofertas da Semana</strong></div>
+  
+</div>
+            <!--Carousel-->
+            <div class="produtos">
+              <div id="carouselExampleControls"  data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active" >
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                      <mat-card *ngFor="let superproduto of produtos" class="example-card">
+                        <img mat-card-image [src]="superproduto.foto" class="imagem">
+                        <mat-card-content>
+                          <p><strong>R$ {{superproduto.valor}}</strong></p>
+                          <p>{{superproduto.nome}}</p>
+                          <p>{{superproduto.categoria.departamento}}</p>
+                        </mat-card-content>
+                        <mat-card-actions>
+                          <button mat-raised-button color="primary"  [routerLink]="['/marketplace/produto/detalhe/', superproduto.idProduto]" >Detalhes</button>
+                        </mat-card-actions>
+                      </mat-card>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            
+
+           
+            </div>
+                
+    </ng-container>
+ 
+    <app-footer></app-footer>
+  </body>

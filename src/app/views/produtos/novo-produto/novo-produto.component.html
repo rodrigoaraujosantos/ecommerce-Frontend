@@ -1,0 +1,81 @@
+<app-nav-bar></app-nav-bar>
+<ng-container color="bg-light">
+
+  <div class="container">
+    <div class="head">
+      <h3>Cadastro de Produtos</h3>
+    </div>
+    <div>
+      <form #FormEdit="ngForm" class="bg-white">
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Nome do Produto</mat-label>
+          <input type="text" matInput placeholder="Ex. Placa de Vídeo" id="nome" name="nome" [(ngModel)]="formProduto.nome">
+
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="fill" floatLabel="always">
+          <mat-label>Preço(R$)</mat-label>
+          <input matInput type="number" class="form-control" id="valor" name="valor" matInput
+            [(ngModel)]="formProduto.valor">
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label for="desconto" class="form-mat-label">Desconto</mat-label>
+          <input type="number" class="form-control" id="desconto" name="desconto" matInput
+            [(ngModel)]="formProduto.desconto">
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label for="validadeDesconto" class="form-mat-label">Validade do Desconto</mat-label>
+          <input type="date" class="form-control" id="validadeDesconto" name="validadeDesconto" matInput
+            [(ngModel)]="formProduto.validadeDesconto">
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label for="estoque" class="form-mat-label">Estoque</mat-label>
+          <input type="number" class="form-control" id="estoque" name="estoque" matInput
+            [(ngModel)]="formProduto.estoque">
+        </mat-form-field>
+
+        <div class="categoria">
+          <label for="categoria"> Categoria</label>
+          <select class="form-select full-width " aria-label="Default select example" name="categoriaSelecionada" [(ngModel)]="categoriaSelecionada">
+            <option>Categoria</option>
+            <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nomeCategoria}}</option>
+          </select>
+        </div>
+       
+
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Descrição</mat-label>
+          <textarea name="descricao" [(ngModel)]="formProduto.descricao" matInput cdkTextareaAutosize></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="fill" *ngIf=" !administradorMode">
+          <mat-label for="idEmpreendedor" class="form-mat-label">Loja</mat-label>
+          <input class="form-control" id="idEmpreendedor" name="loja" matInput [value]="empreendedor.nomeNegocio"
+            readonly>
+        </mat-form-field>
+        <div *ngIf=" administradorMode">
+          <label for="loja">Loja</label>
+          <select class="form-select full-width" aria-label="Default select example" name="categoriaSelecionada"  [(ngModel)]="empreendedor">
+            
+            <option *ngFor="let empreendedor of empreendedores" [ngValue]="empreendedor">{{empreendedor.nomeNegocio}}</option>
+          </select>
+        </div>
+
+        <label for="foto" class="form-mat-label">Imagens do Produto</label>
+        <input type="file" class="upload-foto form-control" id="img"  (change)="uploadFile($event)">
+
+        <div class="button-container">
+          <button class="custom" type="reset" mat-raised-button color="accent" routerLink="/administrador/produtos" *ngIf="administradorMode">Cancelar <mat-icon>cancel</mat-icon></button>
+          <button class="custom" type="reset" mat-raised-button color="accent" routerLink="/empreendedor/produto-Empreendedor" *ngIf="!administradorMode">Cancelar <mat-icon>cancel</mat-icon></button>
+          <button class="adicionar" type="submit" mat-raised-button color="primary" id="button-add"
+            (click)="create(FormEdit)">Adicionar <mat-icon>save</mat-icon></button>
+         
+        </div>
+
+      </form>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,60 @@
+body {
+  height: 130vh;
+}
+
+
+.expansion {
+  width: 70vw;
+  margin-left: 180px;
+  margin-top: 30px;
+}
+
+.expandido {
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-around;
+}
+
+mat-panel-title {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.informacao-pedido {
+  justify-content: left;
+  margin-right: 350px;
+  margin-top: 25px;
+}
+
+.titulo {
+  margin-top: 70px;
+  margin-left: 180px;
+  font-family: "Martel Sans", sans-serif;
+  color: #f97b2b;
+  font-weight: 700;
+}
+
+.material-icons {
+  font-size: larger;
+}
+.imgProd{
+  width: 25vh;
+}
+.sPendencia{
+  text-align: center;
+}
+.btn-atualizar{
+  margin-top: 5px;
+  height: 5vh;
+  font-size: large;
+}
+
+.status {
+  margin-top: 60px;
+}
+
+.status-atualizar {
+  display: flex;
+  flex-direction: column;
+}

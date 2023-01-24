@@ -1,0 +1,133 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="form-container">
+  <mat-label id="title">Editar Produto</mat-label>
+  <mat-form-field appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput [(ngModel)]="produto.nome" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Descrição</mat-label>
+    <textarea type="text" name="descricao" matInput  name="descricao" id="input" [(ngModel)]="produto.descricao"  rows="5" cols="33" matInput
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="3"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" floatLabel="always">
+    <mat-label>Valor</mat-label>
+    <input matInput type="number" class="example-right-align" [(ngModel)]="produto.valor" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Quantidade</mat-label>
+    <input matInput [(ngModel)]="produto.estoque" required>
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label for="desconto" class="form-mat-label">Desconto</mat-label>
+    <input type="number" class="form-control" id="desconto" name="desconto" matInput
+      [(ngModel)]="produto.desconto">
+  </mat-form-field>
+
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label for="validadeDesconto" class="form-mat-label">Validade do Desconto</mat-label>
+    <input type="date" class="form-control" id="validadeDesconto" name="validadeDesconto" matInput
+      [(ngModel)]="produto.validadeDesconto">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Categoria</mat-label>
+    <mat-select id="input" [(ngModel)]="categoriaSelecionada" name="categoriaSelecionada">
+      <mat-option [value]="categoria.idCategoria" *ngFor="let categoria of categorias">
+        {{categoria.nomeCategoria}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nova foto</mat-label>
+    <input matInput  required>
+    <input type="file" class="upload-foto form-control" id="input" (change)="uploadFile($event)">
+  </mat-form-field>
+
+  <div class="example-button-row">
+    <button  class="save" mat-raised-button color="warn"  (click)="update()" color="primary">
+      Salvar<mat-icon>save</mat-icon>
+    </button>
+    <button routerLink="/administrador/produtos" id="button-edit" class="edit" mat-raised-button color="accent" *ngIf="perfil == 'ROLE_ADMIN'">
+      Cancelar <mat-icon>cancel</mat-icon>
+     </button>
+
+    <button routerLink="/empreendedor/produto-Empreendedor" id="button-edit" class="edit" mat-raised-button color="accent" *ngIf="perfil == 'ROLE_EMPREENDEDOR'">
+     Cancelar <mat-icon>cancel</mat-icon>
+    </button>
+  </div>
+</div>
+
+
+
+<!-- <form #formEdit="ngForm" class="bg-light">
+
+  <mat-card class="card" class="bg-white">  
+    <mat-card-header class="header">
+      
+      <mat-card-title>Editar Produto</mat-card-title>
+      
+      <p>
+        <mat-card-subtitle>Nome</mat-card-subtitle>
+          <input type="text" name="nome" matInput  name="nome" id="input" [(ngModel)]="produto.nome">
+      </p>
+
+      <p>
+        <mat-card-subtitle>Descrição</mat-card-subtitle>
+          <textarea type="text" name="descricao" matInput  name="descricao" id="input" [(ngModel)]="produto.descricao"  rows="5" cols="33" matInput
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="3"></textarea>
+      </p>
+
+      <p>
+        <mat-card-subtitle>Valor</mat-card-subtitle>
+          <input type="text" name="valor" matInput placeholder="" name="valor" id="input" [(ngModel)]="produto.valor">
+      </p>
+
+      <p>
+        <mat-card-subtitle>Quantidade</mat-card-subtitle>
+        <input type="text" name="estoque" matInput placeholder="" name="estoque" id="input" [(ngModel)]="produto.estoque">
+      </p>
+
+      <p>
+        <mat-card-subtitle>Categoria</mat-card-subtitle>
+        <select id="input" [(ngModel)]="categoriaSelecionada" name="categoriaSelecionada" >
+          <option [value]="categoria.idCategoria" *ngFor="let categoria of categorias" >
+            {{categoria.nomeCategoria}}
+          </option>
+        </select>
+      </p>
+      
+      <p>
+        <mat-card-subtitle>Nova foto</mat-card-subtitle>
+          <input type="file" class="upload-foto form-control" id="input" (change)="uploadFile($event)">
+      </p>
+    
+    </mat-card-header>
+    
+    <mat-card-actions align="start">
+      
+      <button class="delete" mat-mini-fab color="warn"  (click)="update()">
+        <mat-icon>save</mat-icon>
+      </button>
+      
+      <button routerLink="/empreendedor/produto-Empreendedor" id="button-edit" class="edit" mat-mini-fab color="accent">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    
+    </mat-card-actions>
+  </mat-card>
+
+</form> -->
+
+

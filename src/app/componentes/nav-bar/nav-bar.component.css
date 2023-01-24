@@ -1,0 +1,49 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  /* position: fixed; */
+  top: 0;
+  height: 10vh;
+  
+
+} 
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.flex-box{
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: top 0.3s;
+  padding: 0px;
+  z-index: 999999;
+}
+
+
+nav{
+  margin-bottom: 64px;
+}
+
+img {
+height: 8vh;
+padding-left: 12vh;
+font-family: 'Martel Sans', sans-serif;
+
+}
+
+.logo{
+   width: 120px;
+  left: 50px;
+  display: flex;
+  align-items:flex-start;
+  justify-items: center;
+}

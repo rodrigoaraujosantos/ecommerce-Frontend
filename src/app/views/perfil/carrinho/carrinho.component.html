@@ -1,0 +1,495 @@
+<app-nav-bar></app-nav-bar>
+<!-- <mat-toolbar></mat-toolbar> -->
+
+<div class="page-header-wrapper container-wrapper bg-light">
+  <img class="logo" src="../../../../assets/logo-carrinho-de-compra-3.svg" alt="" />
+</div>
+
+<body class="bg-light top">
+  <div layout="column" layout-padding layout-margin layout-fill style="min-height: 224px" class="container bg-light">
+    <mat-stepper class="stepper mat-elevation-z1">
+      <mat-step label="Carrinho" state="phone">
+        <div class="carrinho" color="bg-light">
+          <!-- ========================= SECTION PAGETOP ========================= -->
+          <section class="section-pagetop">
+            <div class="container">
+              <h2 class="title-page">
+                Carrinho de Compras
+                <span class="material-icons"> shopping_cart </span>
+              </h2>
+            </div>
+            <!-- container //  -->
+          </section>
+          <!-- ========================= SECTION INTRO END// ========================= -->
+
+          <!-- ========================= SECTION CONTENT ========================= -->
+          <section class="section-content padding-y">
+            <div class="container">
+              <div class="row">
+                <main class="col-md-9">
+                  <div class="card rounded-1">
+                    <table class="table table-borderless table-shopping-cart">
+                      <thead class="text-muted">
+                        <tr class="small text-uppercase">
+                          <th class="produtos" scope="col">Produtos</th>
+                          <th scope="col" class="quantidade" width="120">
+                            Quantidade
+                          </th>
+                          <th scope="col" width="120">Preço</th>
+                          <th scope="col" class="text-right" width="200"></th>
+                        </tr>
+                      </thead>
+                      <!--CORPO DA TABELA COM PRODUTOS-->
+                      <tbody *ngFor="let item of itensCarrinho; let idx = index">
+                        <tr>
+                          <td>
+                            <div class="d-flex">
+                              <div class="aside">
+                                <img class="produto-foto" src="{{ item.produto.foto }}" />
+                              </div>
+                              <div class="nome-produto">
+                                <a [routerLink]="[
+                                    'produto/detalhe',
+                                    item.produto.idProduto
+                                  ]" class="title text-dark">{{ item.produto.nome }}</a>
+                                <p class="text-muted small">
+                                  {{ item.produto.categoria.nomeCategoria }}
+                                </p>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="d-flex">
+                            <button class="quantidade-button" mat-icon-button (click)="adicionar(idx)">
+                              <mat-icon>add</mat-icon>
+                            </button>
+                            <label type="number" class="mt-2">{{ item.quantidade }}
+                            </label>
+                            <div class="inputQtd">
+                              <button class="quantidade-button" mat-icon-button (click)="remover(idx, item.idItem)">
+                                <mat-icon>remove</mat-icon>
+                              </button>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="price-wrap">
+                              <var class="price">
+                                <strong>R$ {{ item.valorParcial }}</strong></var>
+                            </div>
+                            <!-- price-wrap .// -->
+                          </td>
+                          <td>
+                            <button mat-fab class="delete" color="warn" (click)="removerItem(item.idItem)">
+                              <mat-icon>delete</mat-icon>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <div class="card-body rounded-0 border-top bg-light">
+                      <div class="buttons-section d-flex justify-content-between">
+                        <button class="button-color" mat-raised-button color="primary" [routerLink]="['/marketplace']"
+                          routerLinkActive="router-link-active">
+                          <span class="material-icons"> navigate_before </span>continuar comprando
+                        </button>
+                        <button mat-raised-button color="primary" matStepperNext>
+                          proximo
+                          <span class="material-icons"> navigate_next </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- card.// -->
+
+                  <div class="alert alert-success rounded-1 d-flex justify-content-center ">
+                    <p class="icontext">
+                      <span class="truck material-icons"> local_shipping </span>
+                      Frete Grátis!
+                    </p>
+                  </div>
+                </main>
+                <!-- col.// -->
+                <aside class="col-md-3">
+                  <div class="card mb-3">
+                    <div class="card-body">
+                      <form>
+                        <div class="form-group">
+                          <label>Tem um Cupom?</label>
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Código" />
+                            <span class="input-group-append">
+                              <button mat-raised-button color="primary">
+                                ultilizar
+                              </button>
+                            </span>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <!-- card-body.// -->
+                  </div>
+                  <!-- card .// -->
+                  <div class="card">
+                    <div class="card-body">
+                      <dl class="dlist-align d-flex">
+                        <dt>TOTAL PARCIAL : </dt>
+                        <dd class="total justify-content-end">
+                          R$ {{ totalParcial }},00
+                        </dd>
+                      </dl>
+                      <dl class="dlist-align d-flex">
+                        <dt>DESCONTO : </dt>
+                        <dd class="total text-right justify-content-end">
+                          R$ {{ desconto }},00
+                        </dd>
+                      </dl>
+                      <div class="bg-light">
+                        <dl class="dlist-align d-flex">
+                          <dt class="mt-4">TOTAL : </dt>
+                          <dd class="total text-right justify-content-end mt-4">
+                            <strong>R$ {{ total }},00</strong>
+                          </dd>
+                        </dl>
+                        <hr />
+                      </div>
+                    </div>
+                    <!-- card-body.// -->
+                  </div>
+                  <!-- card .// -->
+                </aside>
+                <!-- col.// -->
+              </div>
+            </div>
+            <!-- container .//  -->
+          </section>
+        </div>
+      </mat-step>
+
+      <mat-step label="Endereço" state="chat">
+        <section class="section-pagetop d-flex">
+          <div class="container">
+            <h2 class="title-page">
+              Endereço de Entrega
+              <span class="material-icons"> local_shipping </span>
+            </h2>
+          </div>
+          <!-- container //  -->
+          <div class="enderecoCadastrado">
+            <mat-checkbox class="example-margin" (change)="DesabilitarInputEnderecoNovo()">Usar endereço
+              Cadastrado</mat-checkbox>
+          </div>
+        </section>
+
+        <div class="card rounded-1">
+          <form #formEditEndereco="ngForm" class="form-endereco">
+            <div class="endereco-1">
+              <mat-form-field appearance="fill" class="small">
+                <mat-label>CEP</mat-label>
+                <input type="text" matInput placeholder="" name="cep" required [(ngModel)]="enderecoN.cep"
+                  [disabled]="enderecoNovo" />
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="small">
+                <mat-label>Estado</mat-label>
+                <input type="text" matInput placeholder="" name="estado" required [(ngModel)]="enderecoN.estado"
+                  [disabled]="enderecoNovo" />
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="small">
+                <mat-label>Cidade</mat-label>
+                <input type="cidade" matInput placeholder="" name="cidade" required [(ngModel)]="enderecoN.cidade"
+                  [disabled]="enderecoNovo" />
+              </mat-form-field>
+            </div>
+            <div class="endereco-1">
+              <mat-form-field appearance="fill" class="rua">
+                <mat-label>Rua</mat-label>
+                <input type="text" matInput placeholder="" name="rua" required [(ngModel)]="enderecoN.rua"
+                  [disabled]="enderecoNovo" />
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="small">
+                <mat-label>Número</mat-label>
+                <input type="number" matInput placeholder="" name="numero" required [(ngModel)]="enderecoN.numero"
+                  [disabled]="enderecoNovo" />
+              </mat-form-field>
+            </div>
+            <div class="d-flex bairro-ref">
+              <mat-form-field appearance="fill" class="small">
+                <mat-label>Bairro</mat-label>
+                <input type="text" matInput placeholder="" name="bairro" required [(ngModel)]="enderecoN.bairro"
+                  [disabled]="enderecoNovo" />
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="small">
+                <mat-label>Referências</mat-label>
+                <input type="text" matInput placeholder="" name="referencia" [(ngModel)]="enderecoN.referencia"
+                  [disabled]="enderecoNovo" />
+              </mat-form-field>
+
+              <div class="salvar">
+                <button class="salvar" mat-raised-button color="primary" matStepperNext
+                  (click)="criarEndereco(formEditEndereco)">
+                  Salvar
+                </button>
+              </div>
+            </div>
+          </form>
+          <div class="card-body rounded-0 border-top bg-light">
+            <div class="buttons-section d-flex justify-content-between">
+              <button class="button-color" mat-raised-button color="primary" matStepperPrevious>
+                <span class="material-icons"> navigate_before </span>anterior
+              </button>
+              <button class="button" mat-raised-button color="primary" matStepperNext>
+                proximo <span class="material-icons"> navigate_next </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-step>
+      <mat-step label="Pagamento">
+        <section class="section-pagetop d-flex">
+          <div class="container">
+            <h2 class="title-page">
+              Pagamento <span class="material-icons"> credit_card </span>
+            </h2>
+            <div class="card payment-methods row">
+              <h4>Método de pagamento</h4>
+              <div class="col-sm">
+                <div class="radio-metodo-pagamento col-sm">
+                  <div class="cartao-credito">
+                    <input type="radio" class="custom-control-input" id="payment-1" name="payment" />
+                    <label class="custom-control-label" for="payment-1">Cartão de Crédito/Débito</label>
+                  </div>
+                  <div class="pic col-sm">
+                    <input type="radio" class="custom-control-input" id="payment-1" name="payment" />
+                    <label class="custom-control-label" for="payment-1">
+                      PIX</label>
+                  </div>
+                  <div class="boleto col-sm">
+                    <input type="radio" class="custom-control-input" id="payment-1" name="payment" />
+                    <label class="custom-control-label" for="payment-1">Boleto Bancário</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--card método de pagamento-->
+          </div>
+          <!-- container //  -->
+        </section>
+
+        <div class="card rounded-1">
+          <div class="container" color="bg-light">
+            <form action="#">
+              <div class="row">
+                <div class="col" color="bg-white">
+                  <h4 class="title">Endereço de Cobrança</h4>
+                  <div class="enderecoCadastrado">
+                    <mat-checkbox class="example-margin" (change)="DesabilitarInputEnderecoNovo()">Igual ao endereço de
+                      entrega</mat-checkbox>
+                  </div>
+                  <div class="end-cobranca">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Logradouro</mat-label>
+                      <input matInput type="text" placeholder="Rua dos girassóis" />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Cidade</mat-label>
+                      <input matInput type="text" placeholder="Manaus" />
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                      <mat-label>Estado</mat-label>
+                      <input matInput type="text" placeholder="MA" />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>CEP</mat-label>
+                      <input matInput type="text" placeholder="123456789" />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Referência</mat-label>
+                      <input matInput type="text" placeholder="Referências" />
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <h4 class="dados-cartao">Dados do Cartão</h4>
+
+                  <div class="inputBox" color="bg-white">
+                    <span>Cartões Aceitos:</span>
+                    <img src="./../../../../assets/img_cartoes.png" alt="" />
+                  </div>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Nome do Títular</mat-label>
+                    <input matInput type="text" placeholder="nome" />
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Número do cartão</mat-label>
+                    <input matInput type="text" placeholder="nome" />
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Exp Mês</mat-label>
+                    <input matInput type="text" placeholder="XX" />
+                  </mat-form-field>
+
+                  <div class="flex">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Exp Ano</mat-label>
+                      <input matInput type="text" placeholder="20XX" />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>CVV</mat-label>
+                      <input matInput type="text" placeholder="123" />
+                    </mat-form-field>
+                    <button class="cadastrar-cartao" color="accent" mat-raised-button matStepperNext>
+                      Cadastrar Cartão
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="card-body rounded-0 border-top bg-light">
+            <div class="buttons-section d-flex justify-content-between">
+              <button class="button-color" mat-raised-button color="primary" matStepperPrevious>
+                <span class="material-icons"> navigate_before </span>anterior
+              </button>
+              <button class="button" mat-raised-button color="primary" matStepperNext>
+                proximo <span class="material-icons"> navigate_next </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-step>
+
+      <!-- Icon overrides. -->
+      <mat-step label="Finalizar">
+        <section class="section-pagetop">
+          <div class="container">
+            <h2 class="title-page">
+              Finalizar<span class="material-icons"> check_circle </span>
+            </h2>
+          </div>
+          <!-- container //  -->
+        </section>
+
+        <section class="informacao-pedido padding-y">
+          <div class="informacao-pedido">
+            <div class="row">
+              <main class="col-md-9">
+                <div class="card rounded-1">
+                  <h4 class="m-3">Informações do pedido</h4>
+
+                  <table class="informacao-pedido">
+                    <div>
+                      <div class="m-3">
+                        <tr>
+                          <strong>Nome Completo</strong>
+                        </tr>
+                        <td>
+                          <p>
+                            {{ pedido.cliente.nome }}
+                            {{ pedido.cliente.sobrenome }}
+                          </p>
+                        </td>
+                      </div>
+                      <div class="col-md-6 m-3">
+                        <tr>
+                          <strong>Telefone</strong>
+                        </tr>
+                        <td>
+                          <p>{{ pedido.cliente.telefone }}</p>
+                        </td>
+                      </div>
+                      <div class="col-md-12 m-3">
+                        <tr>
+                          <strong>Logradouro</strong>
+                        </tr>
+                        <td>
+                          <p>{{ pedido.entrega.rua }}</p>
+                        </td>
+                      </div>
+
+                      <div class="col-md-6 m-3 justify-content-between">
+                        <tr>
+                          <strong>Cidade</strong><strong> Estado</strong>
+                        </tr>
+                        <td>
+                          <p>
+                            {{ pedido.entrega.cidade }} -
+                            {{ pedido.entrega.estado }}
+                          </p>
+                        </td>
+                      </div>
+
+                      <div class="col-md-6 m-3">
+                        <tr>
+                          <strong>CEP</strong>
+                        </tr>
+                        <td>
+                          <p>{{ pedido.entrega.cep }}</p>
+                        </td>
+                      </div>
+                    </div>
+                  </table>
+
+                  <div class="card-body rounded-0 border-top bg-light">
+                    <div class="buttons-section d-flex justify-content-between">
+                      <button class="button-color" mat-raised-button color="primary" matStepperPrevious>
+                        <span class="material-icons"> navigate_before </span>anterior
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </main>
+              <aside class="col-md-3 d-flex">
+                <div class="card card-body">
+                  <div class="checkout-summary">
+                    <h2>Resumo Total</h2>
+
+                    <dl class="dlist-align d-flex">
+                      <dt>TOTAL PARCIAL :</dt>
+                      <dd class="total justify-content-end">
+                        R$ {{ totalParcial }},00
+                      </dd>
+                    </dl>
+                    <dl class="dlist-align d-flex">
+                      <dt>DESCONTO :</dt>
+                      <dd class="total text-right justify-content-end">
+                        R$ {{ desconto }},00
+                      </dd>
+                    </dl>
+                    <dl>
+                      <dt>FRETE GRÁTIS</dt>
+                      <hr />
+                    </dl>
+                    <div class="bg-light">
+                      <dl class="dlist-align d-flex">
+                        <dt class="mt-4">TOTAL :</dt>
+                        <dd class="total text-right h5 justify-content-end mt-4">
+                          <strong>R$ {{ total }},00</strong>
+                        </dd>
+                      </dl>
+                      <hr />
+                    </div>
+
+                  </div>
+                  <div class="rounded-0 border-top justify-content-center">
+                    <button class="confirmar" (click)="criarPedido()" mat-raised-button color="primary">
+                      Confirmar Compra
+                      <span class="material-icons"> check_circle </span>
+                    </button>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+      </mat-step>
+    </mat-stepper>
+
+  </div>
+</body>
+
+
+<!-- <app-footer></app-footer> -->
